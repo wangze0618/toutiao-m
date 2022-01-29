@@ -9,7 +9,13 @@ import './style/index.less'
 import { NavBar, Form, Field, Button } from 'vant';
 import { CountDown } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
+import { Image as VanImage } from 'vant';
+import { Grid, GridItem, Cell } from 'vant';
 
+Vue.use(Grid);
+Vue.use(Cell);
+Vue.use(GridItem);
+Vue.use(VanImage);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
 Vue.use(CountDown);

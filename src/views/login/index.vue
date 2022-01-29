@@ -1,7 +1,12 @@
 <template>
   <div class="login-container">
     <!-- 导航栏 -->
-    <van-nav-bar class="page-nav-bar" title="登录" />
+    <van-nav-bar @click-left="$router.back()" class="page-nav-bar" title="登录">
+      <template #left>
+        <i class="toutiao toutiao-zuojiantou"></i>
+        <span style="color: #fff" class="left-text">返回</span>
+      </template>
+    </van-nav-bar>
 
     <!-- 表单 -->
     <van-form ref="loginForm" @submit="onSubmit">
@@ -142,6 +147,9 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.toutiao-zuojiantou {
+  color: #fff;
+}
 .toutiao {
   font-size: 0.5rem;
 }
