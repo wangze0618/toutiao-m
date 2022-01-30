@@ -3,7 +3,7 @@
     <!-- 子路由出口 -->
     <router-view></router-view>
     <van-tabbar router v-model="active">
-      <van-tabbar-item replace to="/"
+      <van-tabbar-item replace to="/home"
         >首页
         <template #icon> <i class="toutiao toutiao-shouye"></i> </template>
       </van-tabbar-item>
@@ -19,7 +19,7 @@
       </van-tabbar-item>
 
       <van-tabbar-item replace to="/my"
-        >我的
+        >{{ $store.state.user ? "我的" : "未登录" }}
         <template #icon> <i class="toutiao toutiao-wode"></i> </template>
       </van-tabbar-item>
     </van-tabbar>
@@ -31,7 +31,7 @@ export default {
   name: "LayoutIndex",
   data() {
     return {
-      active: 0,
+      active: this.$router.index,
     };
   },
 };

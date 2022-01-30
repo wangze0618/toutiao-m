@@ -17,21 +17,33 @@ const routes = [
     children: [{
       path: 'home',
       name: 'home',
+      meta: {
+        index: 0
+      },
       component: () => import('../views/home/index.vue')
     },
     {
       path: 'qa',
       name: 'qa',
+      meta: {
+        index: 1
+      },
       component: () => import('../views/qa/index.vue')
     },
     {
       path: 'video',
       name: 'video',
+      meta: {
+        index: 2
+      },
       component: () => import('../views/video/index.vue')
     },
     {
       path: 'my',
       name: 'my',
+      meta: {
+        index: 3
+      },
       component: () => import('../views/my/index.vue')
     },
     ]

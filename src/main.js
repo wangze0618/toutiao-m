@@ -11,7 +11,10 @@ import { CountDown } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
 import { Image as VanImage } from 'vant';
 import { Grid, GridItem, Cell } from 'vant';
+import { Dialog } from 'vant'
 
+
+Vue.use(Dialog);
 Vue.use(Grid);
 Vue.use(Cell);
 Vue.use(GridItem);
