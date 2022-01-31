@@ -6,14 +6,16 @@ import 'amfe-flexible'
 import './style/index.less'
 // 动态设置rem基准值 引入flexible
 
-import { Tab, Tabs, NavBar, Form, Field, Button, List } from 'vant';
+import { Tab, Tabs, NavBar, Form, Field, Button, List, Toast } from 'vant';
 import { CountDown } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
 import { Image as VanImage } from 'vant';
 import { Grid, GridItem, Cell, Search } from 'vant';
-import { Dialog } from 'vant'
+import { Dialog, PullRefresh } from 'vant'
+import './utils/dayjs'
 
-
+Vue.use(PullRefresh);
+Vue.use(Toast);
 Vue.use(Dialog);
 Vue.use(List);
 Vue.use(Grid);

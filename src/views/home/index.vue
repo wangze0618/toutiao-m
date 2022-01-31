@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <van-nav-bar class="page-nav-bar">
+    <van-nav-bar class="page-nav-bar" fixed>
       <template #title>
         <van-button class="search-button" round size="small">
           <template #default>
@@ -81,16 +81,27 @@ export default {
   width: 17px;
   height: 3px;
   background-color: #3296fa;
-  margin-bottom: 2px;
+  margin-bottom: -0.25rem;
+}
+/deep/ .van-tabs__nav--line {
+  padding-bottom: 0;
 }
 /deep/ .van-tab--active {
   color: #333 !important;
 }
+
 .tabs {
   /deep/ .van-tabs__nav {
+    position: fixed;
     height: 41px;
+    top: 46px;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #edeff3;
   }
   /deep/ .van-tab {
+    // position: fixed;
     color: #777;
     font-size: 15px;
     min-width: 100px;
