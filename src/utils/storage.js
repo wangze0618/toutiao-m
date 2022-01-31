@@ -4,13 +4,20 @@
 
 // 存储
 export const setItem = (key, value) => {
-    value = JSON.stringify(value) || value
+    if (typeof value === 'object') {
+        value = JSON.stringify(value)
+    }
     localStorage.setItem(key, value)
 }
 
 // 获取
 export const getItem = (key) => {
-    return JSON.parse(localStorage.getItem(key))
+    const data = localStorage.getItem(key)
+    try {
+        return JSON.parse(data)
+    } catch (error) {
+        return data
+    }
 
 }
 

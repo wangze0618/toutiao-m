@@ -19,7 +19,7 @@
       </van-tabbar-item>
 
       <van-tabbar-item replace to="/my"
-        >{{ $store.state.user ? "我的" : "未登录" }}
+        >{{ $store.state.user.length == 0 ? "未登录" : "我的" }}
         <template #icon> <i class="toutiao toutiao-wode"></i> </template>
       </van-tabbar-item>
     </van-tabbar>

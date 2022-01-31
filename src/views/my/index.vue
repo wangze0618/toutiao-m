@@ -1,6 +1,6 @@
 <template>
   <div class="My-container">
-    <div class="header not-login" v-if="!user">
+    <div class="header not-login" v-if="this.$store.state.user.length == 0">
       <div class="login-btn" @click="linkTo">
         <img class="login-img" src="~@/assets/mobile.png" alt="" />
         <span class="login-text">登录 / 注册</span>
@@ -57,15 +57,15 @@
     <van-cell
       class="logout-cell"
       @click="logout"
-      v-if="$store.state.user"
+      v-if="$store.state.user.length !== 0"
       title="退出登录"
     />
   </div>
 </template>
 
 <script>
+// import { Toast } from "vant";
 import { mapState } from "vuex";
-import { removeItem } from "../../utils/storage";
 import { userAPI } from "../../api/index.js";
 export default {
   name: "MyIndex",
@@ -74,20 +74,20 @@ export default {
       userInfo: {},
     };
   },
-  async created() {
-    if (this.user) {
-      // console.log(this.user);
-      // this.getUserInfo();
-      try {
-        const res = await userAPI();
-        console.log(res);
-        this.userInfo = res.data.data;
-      } catch (error) {
-        this.$toast.fail("获取数据失败，请稍后再试！");
-      }
+  created() {
+    if (this.$store.state.user) {
+      this.getInfo();
     }
   },
   methods: {
+    async getInfo() {
+      try {
+        const res = await userAPI();
+        this.userInfo = res.data.data;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     linkTo() {
       this.$router.push({
         path: "/login",
@@ -100,14 +100,10 @@ export default {
           message: "确定要退出登录吗？",
         })
         .then(() => {
-          // on confirm
-          this.$store.state.user = null; // 清除Vuex
-          removeItem("TOUTIAO_USER"); // 清除本地存储
-          // this.$store.commit("setUser", "");
+          this.$store.commit("setUser", "");
         })
         .catch(() => {
           return;
-          // on cancel
         });
     },
   },

@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // 存储当前登录用户信息包含token的数据
-    user: getItem('TOUTIAO_USER') || null
+    user: getItem('TOUTIAO_USER') || []
   },
   mutations: {
     setUser(state, data) {

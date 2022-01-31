@@ -1,7 +1,11 @@
 <template>
   <div class="login-container">
     <!-- 导航栏 -->
-    <van-nav-bar @click-left="$router.back()" class="page-nav-bar" title="登录">
+    <van-nav-bar
+      @click-left="$router.push({ path: '/my' })"
+      class="page-nav-bar"
+      title="登录"
+    >
       <template #left>
         <i class="toutiao toutiao-zuojiantou"></i>
         <span style="color: #fff" class="left-text">返回</span>
@@ -65,8 +69,14 @@
 <script>
 import { loginAPI, codeAPI } from "../../api/index";
 import { Toast } from "vant";
+import { setItem } from "../../utils/storage";
 export default {
   name: "LoginIndex",
+  created() {
+    if (!this.$store.state.user) {
+      setItem("TOUTIAO_USER");
+    }
+  },
   data() {
     return {
       isShowCountDown: false,

@@ -6,16 +6,19 @@ import 'amfe-flexible'
 import './style/index.less'
 // 动态设置rem基准值 引入flexible
 
-import { NavBar, Form, Field, Button } from 'vant';
+import { Tab, Tabs, NavBar, Form, Field, Button, List } from 'vant';
 import { CountDown } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
 import { Image as VanImage } from 'vant';
-import { Grid, GridItem, Cell } from 'vant';
+import { Grid, GridItem, Cell, Search } from 'vant';
 import { Dialog } from 'vant'
 
 
 Vue.use(Dialog);
+Vue.use(List);
 Vue.use(Grid);
+Vue.use(Tab);
+Vue.use(Tabs);
 Vue.use(Cell);
 Vue.use(GridItem);
 Vue.use(VanImage);
@@ -25,6 +28,7 @@ Vue.use(CountDown);
 Vue.use(Form);
 Vue.use(Field);
 Vue.use(NavBar);
+Vue.use(Search);
 Vue.use(Button);
 
 
