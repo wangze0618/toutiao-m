@@ -62,7 +62,13 @@
 </template>
 
 <script>
-import { getAllChannelsAPI } from "../../../api/index";
+import { mapState } from "vuex";
+import {
+  addUserChannelAPI,
+  getAllChannelsAPI,
+  delUserChannelAPI,
+} from "../../../api/index";
+import { setItem } from "../../../utils/storage.js";
 export default {
   data() {
     return {
@@ -76,6 +82,7 @@ export default {
     this.getAllChannels();
   },
   methods: {
+    // 删除
     myPage(value, index) {
       if (this.isEdit == false) {
         // 非编辑状态 ，切换页面
@@ -91,10 +98,40 @@ export default {
 
         this.$emit("changeActive", this.active);
         this.ChannelList.splice(index, 1);
+        this.delChannel(value.id);
       }
     },
-    addChannel(value) {
+    async delChannel(id) {
+      try {
+        if (this.user) {
+          // 已登录状态
+          await delUserChannelAPI(id);
+        } else {
+          // 未登录状态
+          setItem("TOUTIAO_CHANNELS", this.myChannels);
+        }
+      } catch (error) {
+        this.$toast.fail("操作失败");
+      }
+    },
+    async addChannel(value) {
       this.ChannelList.push(value);
+
+      // 数据持久化
+      if (this.user) {
+        // 已登录
+        try {
+          await addUserChannelAPI({
+            id: value.id,
+            seq: this.myChannels.length,
+          });
+        } catch (error) {
+          this.$toast.fail("保存失败");
+        }
+      } else {
+        // 未登录
+        setItem("TOUTIAO_CHANNELS", this.myChannels);
+      }
     },
     async getAllChannels() {
       try {
@@ -107,6 +144,7 @@ export default {
     },
   },
   computed: {
+    ...mapState(["user"]),
     recomChannels() {
       return this.AllChannels.filter((f) => {
         return !this.ChannelList.find((e) => {

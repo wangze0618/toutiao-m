@@ -1,5 +1,5 @@
 import { login, code, user, getUserChannels, getArticels } from './user.js';
-import { getAllChannels } from './channel';
+import { getAllChannels, addUserChannel, delUserChannel } from './channel';
 // 登录注册API
 export const loginAPI = login
 
@@ -17,3 +17,9 @@ export const getArticlesAPI = getArticels
 
 // 获取全部频道列表
 export const getAllChannelsAPI = getAllChannels
+
+// 添加用户频道
+export const addUserChannelAPI = addUserChannel
+
+// 删除用户频道
+export const delUserChannelAPI = delUserChannel

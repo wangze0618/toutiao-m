@@ -42,6 +42,8 @@
 import { getUserChannelsAPI } from "../../api/index";
 import ArticleList from "./components/ArticleList.vue";
 import ChannelEdit from "./components/Channel_edit.vue";
+import { mapState } from "vuex";
+import { getItem } from "../../utils/storage";
 export default {
   name: "HomeIndex",
   components: { ArticleList, ChannelEdit },
@@ -53,7 +55,10 @@ export default {
       isChannelEditShow: false,
     };
   },
-  created() {
+  computed: {
+    ...mapState(["user"]),
+  },
+  beforeMount() {
     this.getUserChannel();
   },
   methods: {
@@ -65,13 +70,25 @@ export default {
     popupShow() {
       this.isChannelEditShow = true;
     },
-    // showPopup() {
-    //   this.show = true;
-    // },
+
     async getUserChannel() {
-      const { data } = await getUserChannelsAPI();
-      this.channels = data.data.channels;
-      // console.log(this.channels);
+      let channels = [];
+      if (this.user) {
+        const { data } = await getUserChannelsAPI();
+        channels = data.data.channels;
+      } else {
+        // 未登录，判断是否有本地存储列表数据
+        const localChannels = getItem("TOUTIAO_CHANNELS");
+        if (localChannels) {
+          // 如果有，直接使用
+          channels = localChannels;
+        } else {
+          // 如果没有，请求数据
+          const { data } = await getUserChannelsAPI();
+          channels = data.data.channels;
+        }
+      }
+      this.channels = channels;
     },
   },
 };
