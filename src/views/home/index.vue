@@ -15,32 +15,59 @@
         <ArticleList :channelsList="channels" :id="item.id"></ArticleList>
       </van-tab>
       <template #nav-right>
-        <div class="gengduo">
+        <div class="gengduo" @click.stop="popupShow">
           <i class="toutiao toutiao-gengduo"></i>
         </div>
       </template>
     </van-tabs>
+    <!-- popup! -->
+    <van-popup
+      round
+      closeable
+      position="bottom"
+      :style="{ height: '100%' }"
+      v-model="isChannelEditShow"
+      close-icon-position="top-left"
+    >
+      <ChannelEdit
+        :myChannels="channels"
+        @changeActive="changeActive"
+        :active="active"
+      ></ChannelEdit>
+    </van-popup>
   </div>
 </template>
 
 <script>
 import { getUserChannelsAPI } from "../../api/index";
 import ArticleList from "./components/ArticleList.vue";
-
+import ChannelEdit from "./components/Channel_edit.vue";
 export default {
   name: "HomeIndex",
-  components: { ArticleList },
+  components: { ArticleList, ChannelEdit },
   data() {
     return {
       value: "",
       active: 0,
       channels: [],
+      isChannelEditShow: false,
     };
   },
   created() {
     this.getUserChannel();
   },
   methods: {
+    changeActive(index, isChannelEditShow = true) {
+      // console.log("home", index);
+      this.active = index;
+      this.isChannelEditShow = isChannelEditShow;
+    },
+    popupShow() {
+      this.isChannelEditShow = true;
+    },
+    // showPopup() {
+    //   this.show = true;
+    // },
     async getUserChannel() {
       const { data } = await getUserChannelsAPI();
       this.channels = data.data.channels;
@@ -94,7 +121,7 @@ export default {
   /deep/ .van-tabs__nav {
     position: fixed;
     height: 41px;
-    top: 46px;
+    margin-top: 46px;
     z-index: 2;
     left: 0;
     right: 0;

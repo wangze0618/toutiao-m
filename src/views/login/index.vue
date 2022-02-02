@@ -123,7 +123,7 @@ export default {
         const res = await loginAPI(this.user);
         Toast.success("登录成功！");
         this.$store.commit("setUser", res.data.data);
-        this.$router.push({ name: "my" });
+        this.$router.push({ name: "home" });
       } catch (error) {
         if (error.response.status === 400) {
           Toast.fail("手机号或验证码错误！");

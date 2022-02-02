@@ -81,7 +81,7 @@ export default {
         // 异步更新数据
         const { data } = await getArticlesAPI({
           channel_id: this.index,
-          timestamp: this.time || Date.now(),
+          timestamp: this.time,
           with_top: 1,
         });
         // 把请求数据放到list数组里
