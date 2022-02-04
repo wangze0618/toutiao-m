@@ -5,8 +5,8 @@
       :finished="finished"
       finished-text="没有更多了"
       @load="onLoad"
-      error-text="加载失败"
-      :error="error"
+      error-text="加载失败，请点击重试"
+      :error.sync="error"
     >
       <van-cell
         v-for="(item, index) in list"

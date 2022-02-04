@@ -7,7 +7,7 @@ import './style/index.less'
 // 动态设置rem基准值 引入flexible
 
 import './utils/dayjs'
-import { Tab, Tabs, NavBar, Form, Field, Button, List, Toast, Icon } from 'vant';
+import { Tab, Tabs, NavBar, Form, Field, Button, List, Toast, Icon, Divider, Loading } from 'vant';
 import { CountDown } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
 import { Image as VanImage } from 'vant';
@@ -36,6 +36,8 @@ Vue.use(Field);
 Vue.use(NavBar);
 Vue.use(Search);
 Vue.use(Button);
+Vue.use(Divider);
+Vue.use(Loading);
 
 
 

@@ -62,4 +62,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+/deep/ .van-cell {
+  align-items: center;
+}
+/deep/ .van-cell-group {
+  align-items: center;
+}
 </style>

@@ -1,8 +1,8 @@
-import axios from '../utils/request'
+import request from '../utils/request'
 
 // 获取搜索建议
 export const getSuggestion = (q) => {
-    return axios({
+    return request({
         method: 'get',
         url: '/app/v1_0/suggestion',
         params: {
@@ -13,7 +13,7 @@ export const getSuggestion = (q) => {
 
 // 获取搜索结果
 export const getSearchResult = (params) => {
-    return axios({
+    return request({
         method: 'get',
         url: '/app/v1_0/search',
         params

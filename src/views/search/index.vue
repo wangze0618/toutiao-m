@@ -28,7 +28,12 @@
     <!-- /联想建议 -->
 
     <!-- 搜索历史记录 -->
-    <search-history v-else></search-history>
+    <search-history
+      @updateSearchHistory="updateSearchHistory"
+      :searchHistory="searchHistory"
+      v-else
+      @search="onSearch"
+    ></search-history>
     <!-- /搜索历史记录 -->
   </div>
 </template>
@@ -37,6 +42,7 @@
 import SearchHistory from "./components/search-history.vue";
 import SearchResult from "./components/search-result.vue";
 import SearchSuggestion from "./components/search-suggestion.vue";
+import { setItem, getItem } from "../../utils/storage";
 export default {
   name: "SearchIndex",
   components: { SearchHistory, SearchResult, SearchSuggestion },
@@ -44,19 +50,35 @@ export default {
     return {
       searchText: "",
       isResultShow: false,
+      searchHistory: getItem("TOUTIAO_SEARCH_HISTORIES") || [],
     };
   },
   methods: {
+    updateSearchHistory() {
+      this.searchHistory = [];
+    },
     search_main() {
       this.isResultShow = false;
     },
     onSearch(val) {
-      console.log(val);
       this.searchText = val;
+      const val_index = this.searchHistory.indexOf(val);
+      if (val_index == -1) {
+        this.searchHistory.unshift(val);
+      } else {
+        this.searchHistory.splice(val_index, 1);
+      }
       this.isResultShow = true;
     },
     onCancel() {
       this.$router.back();
+    },
+  },
+  watch: {
+    searchHistory: {
+      handler(val) {
+        setItem("TOUTIAO_SEARCH_HISTORIES", val);
+      },
     },
   },
 };
@@ -64,8 +86,16 @@ export default {
 
 <style scoped lang='less'>
 .search-container {
+  padding-top: 54px;
   .van-search__action {
     color: #fff;
+  }
+  .van-search {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 import { login, code, user, getUserChannels, getArticels } from './user.js';
 import { getAllChannels, addUserChannel, delUserChannel } from './channel';
 import { getSuggestion, getSearchResult } from './search';
+import { getArticle } from './article';
 
 // 登录注册API
 export const loginAPI = login
@@ -31,3 +32,6 @@ export const getSuggestionAPI = getSuggestion
 
 // 获取搜索建议
 export const getSearchResultAPI = getSearchResult
+
+// 获取文章详情
+export const getArticleByIdAPI = getArticle

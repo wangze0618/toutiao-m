@@ -1,8 +1,8 @@
-import axios from '../utils/request';
+import request from '../utils/request';
 // import store from '../store/index'
 // 登录接口
 export const login = (data) => {
-    return axios({
+    return request({
         method: 'post',
         url: '/app/v1_0/authorizations',
         data
@@ -10,14 +10,14 @@ export const login = (data) => {
 }
 // 请求验证码
 export const code = (mobile) => {
-    return axios({
+    return request({
         method: 'get',
         url: `/app/v1_0/sms/codes/${mobile}`,
     })
 }
 // 获取用户个人信息
 export const user = () => {
-    return axios({
+    return request({
         method: 'get',
         url: `/app/v1_0/user`,
         // headers: {
@@ -27,7 +27,7 @@ export const user = () => {
 }
 // 获取用户频道
 export const getUserChannels = () => {
-    return axios({
+    return request({
         method: 'get',
         url: '/app/v1_0/user/channels',
 
@@ -35,7 +35,7 @@ export const getUserChannels = () => {
 }
 // 获取用户频道
 export const getArticels = (params) => {
-    return axios({
+    return request({
         method: 'get',
         url: '/app/v1_1/articles',
         params
