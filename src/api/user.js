@@ -1,5 +1,6 @@
 import request from '../utils/request';
 // import store from '../store/index'
+// GET-> params | POST->data
 // 登录接口
 export const login = (data) => {
     return request({
@@ -20,9 +21,6 @@ export const user = () => {
     return request({
         method: 'get',
         url: `/app/v1_0/user`,
-        // headers: {
-        //     Authorization: `Bearer ${store.state.user.token}`
-        // }
     })
 }
 // 获取用户频道
@@ -39,5 +37,23 @@ export const getArticels = (params) => {
         method: 'get',
         url: '/app/v1_1/articles',
         params
+    })
+}
+
+// 关注用户
+export const addFollow = (target) => {
+    return request({
+        method: 'post',
+        url: '/app/v1_0/user/followings',
+        data: {
+            target
+        }
+    })
+}
+// 取关用户
+export const unFollow = (target) => {
+    return request({
+        method: 'delete',
+        url: `/app/v1_0/user/followings/${target}`,
     })
 }

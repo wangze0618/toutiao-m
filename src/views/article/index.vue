@@ -36,24 +36,21 @@
           <div slot="label" class="publish-date">
             {{ article.pubdate | relativeTime }}
           </div>
-          <van-button
-            class="follow-btn"
-            type="info"
-            color="#3296fa"
-            round
-            size="small"
-            icon="plus"
-            v-if="!article.is_followed"
-            >关注</van-button
+          <follow-user
+            :authorId="article.aut_id"
+            :isFollowed="article.is_followed"
+            @updateFollowState="article.is_followed = $event"
           >
-          <van-button v-else class="follow-btn" round size="small"
-            >已关注</van-button
-          >
+          </follow-user>
         </van-cell>
         <!-- /用户信息 -->
 
         <!-- 文章内容 -->
-        <div class="article-content" v-html="article.content"></div>
+        <div
+          class="article-content"
+          ref="articleContent"
+          v-html="article.content"
+        ></div>
         <van-divider>正文结束</van-divider>
       </div>
       <!-- /加载完成-文章详情 -->
@@ -81,9 +78,17 @@
       <van-button class="comment-btn" type="default" round size="small"
         >写评论</van-button
       >
-      <van-icon name="comment-o" info="123" color="#777" />
-      <van-icon color="#777" name="star-o" />
-      <van-icon color="#777" name="good-job-o" />
+      <van-icon name="comment-o" badge="123" color="#777" />
+      <collect-article
+        :article_id="article.art_id"
+        :is_Collected="article.is_collected"
+        @updateCollect="updateCollect"
+      ></collect-article>
+      <like-article
+        @updateLike="updateLike"
+        :likeAttitude="article.attitude"
+        :art_id="article.art_id"
+      ></like-article>
       <van-icon name="share" color="#777777"></van-icon>
     </div>
     <!-- /底部区域 -->
@@ -91,10 +96,14 @@
 </template>
 
 <script>
+import { ImagePreview } from "vant";
 import { getArticleByIdAPI } from "../../api/index";
+import followUser from "../../components/follow-user/index.vue";
+import collectArticle from "../../components/collect-article/index.vue";
+import likeArticle from "../../components/like-article/index.vue";
 export default {
   name: "ArticleIndex",
-  components: {},
+  components: { followUser, collectArticle, likeArticle },
   props: {
     articleId: {
       type: [Number, String],
@@ -115,12 +124,17 @@ export default {
   },
   mounted() {},
   methods: {
+    updateCollect(val) {
+      this.article.is_collected = val;
+    },
+    updateLike(val) {
+      this.article.attitude = val;
+    },
     async getArticleById() {
       this.loading = true;
       try {
         const { data } = await getArticleByIdAPI(this.articleId);
         this.article = data.data;
-        console.log(data);
       } catch (error) {
         if (error.response && error.response.status == 404) {
           this.errState = 404;
@@ -128,6 +142,28 @@ export default {
         console.log(error.response);
       }
       this.loading = false;
+      this.$nextTick(() => {
+        this.getArticleContent();
+      });
+    },
+    getArticleContent() {
+      const content = this.$refs.articleContent;
+      const imgList = content.querySelectorAll("img");
+      const imgSrc = [];
+
+      imgList.forEach((e, i) => {
+        imgSrc.push(e.src);
+        e.onclick = () => {
+          ImagePreview({
+            images: imgSrc,
+            onClose() {
+              console.log("close");
+            },
+            startPosition: i,
+          });
+          console.log(i);
+        };
+      });
     },
   },
 };
@@ -135,6 +171,9 @@ export default {
 
 <style scoped lang="less">
 // @import "../../style/markdown.css";
+/deep/ li {
+  font-size: 15px;
+}
 /deep/ img {
   width: 100% !important;
 }
@@ -148,7 +187,9 @@ export default {
   width: auto;
   background-color: #d6d6d6;
 }
-
+/deep/ h3 {
+  font-weight: 600;
+}
 /deep/ code {
   width: 100%;
   font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
@@ -247,7 +288,7 @@ export default {
     right: 0;
     bottom: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     box-sizing: border-box;
     height: 44px;
