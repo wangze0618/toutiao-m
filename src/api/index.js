@@ -6,6 +6,7 @@ import {
   getArticels,
   addFollow,
   unFollow,
+  userInfo,
 } from "./user.js";
 import { getAllChannels, addUserChannel, delUserChannel } from "./channel";
 import { getSuggestion, getSearchResult } from "./search";
@@ -16,7 +17,12 @@ import {
   likeArticle,
   unLikeArticle,
 } from "./article";
-
+import {
+  getComment,
+  addCommentLike,
+  cancelCommentLike,
+  addComment,
+} from "./comment";
 // 登录注册API
 export const loginAPI = login;
 
@@ -67,3 +73,18 @@ export const likeArticleAPI = likeArticle;
 
 // 取消点赞文章
 export const unLikeArticleAPI = unLikeArticle;
+
+// 获取文章评论
+export const getCommentAPI = getComment;
+
+// 对评论或评论回复点赞
+export const addCommentLikeAPI = addCommentLike;
+
+// 取消对评论或评论回复点赞
+export const cancelCommentLikeAPI = cancelCommentLike;
+
+// 发布文章评论或评论回复
+export const addCommentAPI = addComment;
+
+// 获取用户信息
+export const userInfoAPI = userInfo;

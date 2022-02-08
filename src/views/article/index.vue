@@ -52,9 +52,16 @@
           v-html="article.content"
         ></div>
         <van-divider>正文结束</van-divider>
+        <comment-list
+          @commentCount="commentCount = $event.total_count"
+          @getCommentList="getCommentList"
+          @ReplyClick="onReplyClick"
+          :source="article.art_id"
+          :list="this.commentList"
+          @count="commentCount = $event"
+        ></comment-list>
       </div>
       <!-- /加载完成-文章详情 -->
-
       <!-- 加载失败：404 -->
       <div v-else-if="errState == 404" class="error-wrap">
         <van-icon name="failure" />
@@ -75,10 +82,19 @@
 
     <!-- 底部区域 -->
     <div class="article-bottom">
-      <van-button class="comment-btn" type="default" round size="small"
+      <van-button
+        @click="isPostShow = true"
+        class="comment-btn"
+        type="default"
+        round
+        size="small"
         >写评论</van-button
       >
-      <van-icon name="comment-o" badge="123" color="#777" />
+      <van-popup v-model="isPostShow" position="bottom">
+        <comment-post @postSuccess="postSuccess" :target="article.art_id">
+        </comment-post>
+      </van-popup>
+      <van-icon name="comment-o" :badge="commentCount" color="#777" />
       <collect-article
         :article_id="article.art_id"
         :is_Collected="article.is_collected"
@@ -92,6 +108,16 @@
       <van-icon name="share" color="#777777"></van-icon>
     </div>
     <!-- /底部区域 -->
+
+    <!-- 评论回复 -->
+    <van-popup v-model="isReplyShow" position="bottom" style="height: 90%">
+      <comment-reply
+        v-if="isReplyShow"
+        @closePop="isReplyShow = false"
+        :comment="currentCommentList"
+      ></comment-reply>
+    </van-popup>
+    <!--/评论回复 -->
   </div>
 </template>
 
@@ -101,9 +127,20 @@ import { getArticleByIdAPI } from "../../api/index";
 import followUser from "../../components/follow-user/index.vue";
 import collectArticle from "../../components/collect-article/index.vue";
 import likeArticle from "../../components/like-article/index.vue";
+import CommentPost from "./components/comment-post.vue";
+import commentList from "./components/comment-list.vue";
+import CommentReply from "./components/comment-reply.vue";
+
 export default {
   name: "ArticleIndex",
-  components: { followUser, collectArticle, likeArticle },
+  components: {
+    followUser,
+    collectArticle,
+    likeArticle,
+    commentList,
+    CommentPost,
+    CommentReply,
+  },
   props: {
     articleId: {
       type: [Number, String],
@@ -115,6 +152,16 @@ export default {
       article: {},
       loading: true,
       errState: 0,
+      commentCount: 0,
+      isPostShow: false,
+      commentList: [],
+      isReplyShow: false,
+      currentCommentList: [],
+    };
+  },
+  provide: function () {
+    return {
+      articleId: this.articleId,
     };
   },
   computed: {},
@@ -124,6 +171,18 @@ export default {
   },
   mounted() {},
   methods: {
+    onReplyClick(comment) {
+      this.currentCommentList = comment;
+      this.isReplyShow = true;
+    },
+    getCommentList(val) {
+      this.commentList = val;
+      this.commentCount = this.commentList.length;
+    },
+    postSuccess(val) {
+      this.isPostShow = false;
+      this.commentList.unshift(val.new_obj);
+    },
     updateCollect(val) {
       this.article.is_collected = val;
     },
@@ -161,7 +220,6 @@ export default {
             },
             startPosition: i,
           });
-          console.log(i);
         };
       });
     },

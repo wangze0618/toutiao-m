@@ -1,69 +1,74 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
+import Vue from "vue";
+import VueRouter from "vue-router";
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/login/index.vue')
+    path: "/login",
+    name: "login",
+    component: () => import("../views/login/index.vue"),
   },
   {
-    path: '/',
-    name: 'layout',
-    component: () => import('../views/layout/index.vue'),
-    redirect: 'home',
+    path: "/",
+    name: "layout",
+    component: () => import("../views/layout/index.vue"),
+    redirect: "home",
 
-    children: [{
-      path: 'home',
-      name: 'home',
-      meta: {
-        index: 0
+    children: [
+      {
+        path: "home",
+        name: "home",
+        meta: {
+          index: 0,
+        },
+        component: () => import("../views/home/index.vue"),
       },
-      component: () => import('../views/home/index.vue')
-    },
-    {
-      path: 'qa',
-      name: 'qa',
-      meta: {
-        index: 1
+      {
+        path: "qa",
+        name: "qa",
+        meta: {
+          index: 1,
+        },
+        component: () => import("../views/qa/index.vue"),
       },
-      component: () => import('../views/qa/index.vue')
-    },
-    {
-      path: 'video',
-      name: 'video',
-      meta: {
-        index: 2
+      {
+        path: "video",
+        name: "video",
+        meta: {
+          index: 2,
+        },
+        component: () => import("../views/video/index.vue"),
       },
-      component: () => import('../views/video/index.vue')
-    },
-    {
-      path: 'my',
-      name: 'my',
-      meta: {
-        index: 3
+      {
+        path: "my",
+        name: "my",
+        meta: {
+          index: 3,
+        },
+        component: () => import("../views/my/index.vue"),
       },
-      component: () => import('../views/my/index.vue')
-    },
-    ]
+    ],
   },
   {
-    path: '/search',
-    name: 'search',
-    component: () => import('../views/search/index.vue')
+    path: "/search",
+    name: "search",
+    component: () => import("../views/search/index.vue"),
   },
   {
-    path: '/article/:articleId',
-    name: 'article',
-    component: () => import('../views/article/index.vue'),
-    props: true
-  }
-
-]
+    path: "/article/:articleId",
+    name: "article",
+    component: () => import("../views/article/index.vue"),
+    props: true, // 路由传参，当 props 设置为 true 时，route.params 将被设置为组件的 props。
+  },
+  {
+    path: "/user/profile",
+    name: "user-profile",
+    component: () => import("../views/user-profile/index.vue"),
+  },
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
