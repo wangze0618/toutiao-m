@@ -7,6 +7,10 @@ import {
   addFollow,
   unFollow,
   userInfo,
+  updateUserName,
+  updateUserSex,
+  updateUserBirthDay,
+  updateUserAvatar,
 } from "./user.js";
 import { getAllChannels, addUserChannel, delUserChannel } from "./channel";
 import { getSuggestion, getSearchResult } from "./search";
@@ -23,6 +27,7 @@ import {
   cancelCommentLike,
   addComment,
 } from "./comment";
+
 // 登录注册API
 export const loginAPI = login;
 
@@ -88,3 +93,15 @@ export const addCommentAPI = addComment;
 
 // 获取用户信息
 export const userInfoAPI = userInfo;
+
+// 修改用户个人姓名
+export const updateUserNameAPI = updateUserName;
+
+// 修改用户个人性别
+export const updateUserSexAPI = updateUserSex;
+
+// 修改用户个人生日
+export const updateUserBirthDayAPI = updateUserBirthDay;
+
+// 修改用户个人头像
+export const updateUserAvatarAPI = updateUserAvatar;

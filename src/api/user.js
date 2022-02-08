@@ -65,3 +65,39 @@ export const userInfo = () => {
     url: `/app/v1_0/user/profile`,
   });
 };
+
+// 修改用户个人姓名
+export const updateUserName = (name) => {
+  return request({
+    method: "patch",
+    url: `/app/v1_0/user/profile`,
+    data: { name },
+  });
+};
+
+// 修改用户个人性别
+export const updateUserSex = (gender) => {
+  return request({
+    method: "patch",
+    url: `/app/v1_0/user/profile`,
+    data: { gender },
+  });
+};
+
+// 修改用户个人生日
+export const updateUserBirthDay = (date) => {
+  return request({
+    method: "patch",
+    url: `/app/v1_0/user/profile`,
+    data: { date },
+  });
+};
+
+// 修改用户个人头像
+export const updateUserAvatar = (photo) => {
+  return request({
+    method: "patch",
+    url: `/app/v1_0/user/photo`,
+    data: { photo },
+  });
+};
