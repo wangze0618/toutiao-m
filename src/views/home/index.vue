@@ -96,25 +96,25 @@ export default {
 
 <style lang='less' scoped>
 .home-container {
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 /deep/ .gengduo {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 33px;
-  height: 41px;
+  width: 66px;
+  height: 82px;
   position: fixed;
   right: 0;
   opacity: 0.9;
   background: #fff;
   & i {
-    font-size: 20px;
+    font-size: 40px;
   }
   &:before {
     content: "";
     position: absolute;
-    width: 1px;
+    width: 2px;
     height: 100%;
     left: 0;
     background: url("../../assets/gradient-gray-line.png");
@@ -122,8 +122,8 @@ export default {
   }
 }
 /deep/ .van-tabs__line {
-  width: 17px;
-  height: 3px;
+  width: 34px;
+  height: 6px;
   background-color: #3296fa;
   margin-bottom: -0.25rem;
 }
@@ -137,8 +137,8 @@ export default {
 .tabs {
   /deep/ .van-tabs__nav {
     position: fixed;
-    height: 41px;
-    margin-top: 46px;
+    height: 82px;
+    margin-top: 92px;
     z-index: 2;
     left: 0;
     right: 0;
@@ -147,8 +147,8 @@ export default {
   /deep/ .van-tab {
     // position: fixed;
     color: #777;
-    font-size: 15px;
-    min-width: 100px;
+    font-size: 30px;
+    min-width: 200px;
     border-right: 1px solid #edeff3;
   }
 }
@@ -156,15 +156,15 @@ export default {
   max-width: unset;
 }
 .search-button {
-  font-size: 14px;
-  width: calc(555px / 2);
-  height: calc(64px / 2);
+  font-size: 28px;
+  width: calc(555px);
+  height: calc(64px);
   color: #fff;
   background-color: #5babfb;
   border-color: #5babfb;
 }
 .search-text {
-  padding-left: 3px;
+  padding-left: 6px;
 }
 /deep/ .van-button__text {
   display: flex;

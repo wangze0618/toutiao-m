@@ -114,6 +114,8 @@ export default {
 .article-container {
   height: 79vh;
   overflow-y: auto;
-  padding-top: 45px;
+  padding-top: 90px;
+  &::-webkit-scrollbar{
+  width:0 !important}
 }
 </style>

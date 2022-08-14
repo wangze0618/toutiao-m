@@ -84,9 +84,9 @@ export default {
 };
 </script>
 
-<style scoped lang='less'>
+<style scoped lang="less">
 .search-container {
-  padding-top: 54px;
+  padding-top: 108px;
   .van-search__action {
     color: #fff;
   }

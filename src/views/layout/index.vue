@@ -39,6 +39,6 @@ export default {
 
 <style lang='less' scoped>
 .toutiao {
-  font-size: 0.6rem;
+  font-size: 0.5rem;
 }
 </style>

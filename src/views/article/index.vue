@@ -230,29 +230,31 @@ export default {
 <style scoped lang="less">
 // @import "../../style/markdown.css";
 /deep/ li {
-  font-size: 15px;
+  font-size: 30px;
 }
 /deep/ img {
   width: 100% !important;
 }
 /deep/ p {
-  font-size: 14px;
+  font-size: 24px;
 }
 /deep/ pre {
-  border-radius: 20px;
-  padding: 10px;
+  border-radius: 10px;
+  padding: 20px;
   display: inline-block;
   width: auto;
-  background-color: #d6d6d6;
+  background-color: #e5e5e5;
 }
 /deep/ h3 {
+  font-size: 28px;
   font-weight: 600;
 }
 /deep/ code {
+  overflow-x: scroll;
   width: 100%;
   font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
     Liberation Mono, monospace;
-  font-size: 12px;
+  font-size: 24px;
 }
 /deep/ .van-nav-bar .van-icon {
   color: #fff;
@@ -262,45 +264,45 @@ export default {
     position: fixed;
     left: 0;
     right: 0;
-    top: calc(92px / 2);
-    bottom: 44px;
+    top: calc(92px);
+    bottom: 88px;
     overflow-y: scroll;
     background-color: #fff;
   }
   .article-detail {
     .article-title {
-      font-size: 20px;
-      padding: 25px 16px;
+      font-size: 40px;
+      padding: 50px 32px;
       margin: 0;
       color: #3a3a3a;
     }
 
     .user-info {
-      padding: 0 16px;
+      padding: 0 32px;
       .avatar {
-        width: 35px;
-        height: 35px;
-        margin-right: calc(17px / 2);
+        width: 70px;
+        height: 70px;
+        margin-right: calc(17px);
       }
       .van-cell__label {
         margin-top: 0;
       }
       .user-name {
-        font-size: 12px;
+        font-size: 24px;
         color: #3a3a3a;
       }
       .publish-date {
-        font-size: 16px;
+        font-size: 32px;
         color: #b7b7b7;
       }
       .follow-btn {
-        width: calc(170px / 2);
-        height: calc(58px / 2);
+        width: calc(170px);
+        height: calc(58px);
       }
     }
 
     .article-content {
-      padding: calc(55px / 2) calc(32px / 2);
+      padding: calc(55px) calc(32px);
       /deep/ p {
         text-align: justify;
       }
@@ -308,7 +310,7 @@ export default {
   }
 
   .loading-wrap {
-    padding: 100px 16px;
+    padding: 200px 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -316,27 +318,27 @@ export default {
   }
 
   .error-wrap {
-    padding: 100px 16px;
+    padding: 200px 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #fff;
     .van-icon {
-      font-size: calc(122px / 2);
+      font-size: calc(122px);
       color: #b4b4b4;
     }
     .text {
-      font-size: 15px;
+      font-size: 30px;
       color: #666666;
-      margin: calc(33px / 2) 0 calc(46px / 2);
+      margin: calc(33px) 0 calc(46px);
     }
     .retry-btn {
-      width: 140px;
-      height: 35px;
-      line-height: 35px;
+      width: 280px;
+      height: 70px;
+      line-height: 70px;
       border: 1px solid #c3c3c3;
-      font-size: 15px;
+      font-size: 30px;
       color: #666666;
     }
   }
@@ -349,21 +351,21 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     box-sizing: border-box;
-    height: 44px;
+    height: 88px;
     border-top: 1px solid #d8d8d8;
     background-color: #fff;
     .comment-btn {
-      width: calc(282px / 2);
-      height: 23px;
+      width: calc(282px);
+      height: 46px;
       border: 1px solid #eeeeee;
-      font-size: 15px;
-      line-height: 23px;
+      font-size: 30px;
+      line-height: 46px;
       color: #a7a7a7;
     }
     .van-icon {
-      font-size: 20px;
+      font-size: 40px;
       .van-info {
-        font-size: 10px;
+        font-size: 20px;
         background-color: #e22829;
       }
     }

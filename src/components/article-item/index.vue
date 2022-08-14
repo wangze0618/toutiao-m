@@ -50,26 +50,26 @@ export default {
 <style lang='less' scoped>
 .van-cell__label {
   span + span {
-    margin-right: 5px;
+    margin-right: 10px;
   }
 }
 .label-span {
-  font-size: calc(22px / 2);
+  font-size: calc(22px);
   color: #b4b4b4;
 }
 .right-cover {
-  width: calc(232px / 2);
-  height: calc(146px / 2);
+  width: calc(232px);
+  height: calc(146px);
 }
 .van-cell__value {
   flex: unset;
-  width: calc(232px / 2);
-  height: calc(146px / 2);
-  padding-left: calc(25px / 2);
+  width: calc(232px);
+  height: calc(146px);
+  padding-left: calc(25px);
 }
 .cell-nav {
   /deep/ .cell-title {
-    font-size: 16px;
+    font-size: 32px;
     color: #3a3a3a;
   }
 }

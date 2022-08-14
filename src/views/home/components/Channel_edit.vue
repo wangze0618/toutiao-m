@@ -177,7 +177,7 @@ export default {
 };
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 .active {
   color: #f85959;
 }
@@ -192,7 +192,7 @@ export default {
 .text {
   margin-top: 0;
   white-space: nowrap;
-  font-size: 14px;
+  font-size: 28px;
 }
 .channel-my-grid {
   .grid-item {
@@ -204,9 +204,9 @@ export default {
       }
       i {
         position: absolute;
-        top: -0.61rem;
+        top: -0.5rem;
         right: -1.313rem;
-        font-size: 16px;
+        font-size: 36px;
         z-index: 2;
         color: #333;
       }
@@ -214,11 +214,12 @@ export default {
   }
 }
 .grid-item {
-  width: 80px;
-  height: 43px;
+  width: 160px;
+  height: 76px;
+  border-radius: 10px !important;
 }
 .cell-left {
-  font-size: 16px;
+  font-size: 32px;
   color: #333;
 }
 .channel-recom-grid {
@@ -231,7 +232,7 @@ export default {
     }
     span {
       margin-top: 0;
-      margin-left: 3px;
+      margin-left: 6px;
       color: #222;
     }
   }
@@ -244,14 +245,14 @@ export default {
 }
 /deep/ .cell-right {
   .btn {
-    width: calc(104px / 2);
-    height: calc(48px / 2);
-    font-size: 13px;
+    width: calc(104px);
+    height: calc(48px);
+    font-size: 26px;
     color: #f85959;
     border: 1px solid #f85959;
   }
 }
 .channel-edit {
-  padding: calc(85px / 2) 0;
+  padding: 85px 0;
 }
 </style>

@@ -115,13 +115,13 @@ export default {
 };
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 .msg-cell {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 .logout-cell {
   text-align: center;
-  margin-top: 5px;
+  margin-top: 10px;
   color: #eb5253;
 }
 .grid-nav {
@@ -134,31 +134,31 @@ export default {
   }
 }
 .grid-nav {
-  height: 70px;
+  height: 140px;
 }
 .grid-icon {
-  font-size: calc(45px / 2);
+  font-size: calc(45px);
 }
 .grid-text {
-  margin-top: 2px;
-  font-size: 14px;
+  margin-top: 4px;
+  font-size: 28px;
 }
 .user-info {
   flex-direction: column;
   .base-info {
     .left {
       .img-left {
-        height: calc(132px / 2);
-        width: calc(132px / 2);
+        height: calc(132px);
+        width: calc(132px);
         border: 1px solid #ffffff36;
       }
       display: flex;
       align-items: center;
       .left-text {
         user-select: none;
-        font-size: 15px;
+        font-size: 30px;
         color: #fff;
-        padding-left: 12px;
+        padding-left: 24px;
       }
       display: flex;
     }
@@ -170,15 +170,15 @@ export default {
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    height: 125px;
+    height: 250px;
     width: 100%;
     // background-color: pink;
-    padding: 76px 32px 23px;
+    padding: 152px 64px 46px;
   }
   .data-state {
     box-sizing: border-box;
     display: flex;
-    height: 75px;
+    height: 150px;
     width: 100%;
     // background-color: blue;
     .data-item {
@@ -190,16 +190,16 @@ export default {
       user-select: none;
       color: #fff;
       .count {
-        font-size: 24px;
+        font-size: 40px;
       }
       .text {
-        font-size: 14px;
+        font-size: 24px;
       }
     }
   }
 }
 .header {
-  height: 200px;
+  height: 400px;
   background: url("~@/assets/banner.png");
   background-size: cover;
   display: flex;
@@ -210,12 +210,12 @@ export default {
     align-items: center;
     justify-content: center;
     .login-img {
-      width: calc(132px / 2);
-      height: calc(132px / 2);
+      width: 120px;
+      height: 120px;
     }
     .login-text {
-      margin-top: 7.5px;
-      font-size: 14px;
+      margin-top: 15px;
+      font-size: 28px;
       color: #fff;
     }
   }

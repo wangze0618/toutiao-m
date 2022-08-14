@@ -67,9 +67,9 @@ export default {
 .scroll-wrap {
   position: fixed;
   right: 0;
-  top: 110px;
+  top: 220px;
   left: 0;
-  bottom: 44px;
+  bottom: 88px;
   overflow-y: auto;
 }
 .post-wrap {
@@ -78,7 +78,7 @@ export default {
   left: 0;
   right: 0;
   background-color: red;
-  height: 44px;
+  height: 88px;
   display: flex;
   justify-content: center;
   align-items: center;

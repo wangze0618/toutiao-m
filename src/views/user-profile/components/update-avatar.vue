@@ -12,7 +12,6 @@
 import "cropperjs/dist/cropper.css";
 import Cropper from "cropperjs";
 import { updateUserAvatarAPI } from "../../../api";
-import { Loading, Toast } from "vant";
 export default {
   name: "UpdateAvatar",
   props: {
@@ -77,7 +76,7 @@ export default {
     width: 100%;
   }
   .avatar-text {
-    padding: 5px;
+    padding: 20px;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -86,9 +85,9 @@ export default {
     justify-content: space-between;
     div {
       display: flex;
-      width: 45px;
-      height: 40px;
-      font-size: 20px;
+      width: 90px;
+      height: 80px;
+      font-size: 30px;
       justify-content: center;
       align-items: center;
       color: #fff;

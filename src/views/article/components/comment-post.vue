@@ -54,12 +54,12 @@ export default {
 .comment-post {
   display: flex;
   align-items: center;
-  padding: 16px 0 16px 16px;
+  padding: 32px 0 32px 32px;
   .post-field {
     background-color: #f5f7f9;
   }
   .post-btn {
-    width: 75px;
+    width: 150px;
     border: none;
     padding: 0;
     color: #6ba3d8;

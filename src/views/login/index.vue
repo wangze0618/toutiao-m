@@ -156,7 +156,7 @@ export default {
 };
 </script>
 
-<style lang='less' scoped>
+<style lang="less" scoped>
 .toutiao-zuojiantou {
   color: #fff;
 }
@@ -183,9 +183,9 @@ export default {
   }
 }
 .btn-login {
-  padding: 10px 0;
+  padding: 20px 0;
   .van-button--info {
-    border-radius: 5px;
+    border-radius: 10px;
     border-color: #6db4fb;
     background-color: #6db4fb;
   }

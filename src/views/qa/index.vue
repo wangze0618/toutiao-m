@@ -9,4 +9,7 @@ export default {
 </script>
 
 <style>
+.qa-container{
+	font-size:32px;
+}
 </style>

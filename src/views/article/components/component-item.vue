@@ -102,6 +102,6 @@ export default {
 }
 
 .van-list {
-  margin-bottom: 45px;
+  margin-bottom: 90px;
 }
 </style>
